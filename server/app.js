@@ -25,3 +25,4 @@ app.use(express.static(publicPath));
 app.get('/', function (req, res) {
     res.sendFile(indexHtmlPath);
 });
+
