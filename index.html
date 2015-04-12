@@ -14,14 +14,14 @@
 
             <!-- html temp for flash-card -->
             <div class="flash-card" ng-controller="FlashCardController" ng-repeat="card in flashCards">
-                <h1>{{ card.question }}</h1>
+                <h1>{{ card.question | uppercase }}</h1>
                 <ul class="flash-card-answers">
-                    <li class="flash-card-answer" ng-repeat="answer in card.answers" ng-click="answerQuestion(answer)">
+                    <li class="flash-card-answer" ng-repeat="answer in card.answers | orderBy: 'text'" ng-click="answerQuestion(answer)">
                         {{ answer.text }}
                     </li>
                 </ul>
 
-                <h2 class="answer-feedback" ng-show="answered">
+                <h2 class="answer-feedback" ng-show="answered" ng-class="{correct:answeredCorrectly===true, incorrect:answeredCorrectly===false}">
                     <span ng-show="answeredCorrectly">  Yeah, got it right! </span>
 
                     <span ng-show="!answeredCorrectly"> Nope, you got it wrong. </span>
